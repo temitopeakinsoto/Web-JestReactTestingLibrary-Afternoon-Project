@@ -26,11 +26,11 @@ export default function Counter({ user, countLimit }) {
       <button data-testid='resetButton' onClick={reset}>reset</button>
       {
         count === countLimit &&
-        <h5 style={{ color: 'red' }}>That's as high as {user}'s count will go</h5>
+        <h5 style={{ color: 'red' }} data-testid='maxWarning'>That's as high as {user}'s count will go</h5>
       }
       {
         count === -countLimit &&
-        <h5 style={{ color: 'red' }}>That's as low as {user}'s count will go</h5>
+        <h5 style={{ color: 'red' }} data-testid='minWarning'>That's as low as {user}'s count will go</h5>
       }
     </div>
   );
