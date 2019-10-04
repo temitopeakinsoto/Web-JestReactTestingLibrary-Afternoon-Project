@@ -27,7 +27,20 @@ describe('sum', () => {
 });
 
 describe('multiply', () => {
-  // write tests! <================================================
+  it('multiplies two number correctly', () => {
+    expect(helpers.multiply(2, 4)).toBe(8);
+    expect(helpers.multiply(2, 0)).not.toBe(1);
+  })
+  it('throws if fed with a single number', () => {
+    expect(() => helpers.multiply(1)).toThrow();
+  });
+  it('throws if fed with a number and a string', () => {
+    expect(() => helpers.multiply(1, '2')).toThrow();
+    expect(() => helpers.multiply('1', 2)).toThrow();
+  });
+  it('throws if fed something which is not a number', () => {
+    expect(() => helpers.multiply('1', '2')).toThrow();
+  });
 });
 
 describe('personMaker', () => {
@@ -40,5 +53,21 @@ describe('personMaker', () => {
       });
   });
 
-  // write more tests! <===========================================
+  it('throws if only one parameter is passed', () => {
+    expect(helpers.personMaker('peter'))
+      .not.toMatchObject({
+        id: '123',
+        name: 'peter',
+        age: 4,
+      });
+  });
+
+  it('throws if the age is a string', () => {
+    expect(helpers.personMaker('peter', '4'))
+      .not.toMatchObject({
+        id: '123',
+        name: 'peter',
+        age: 4,
+      });
+  });
 });
